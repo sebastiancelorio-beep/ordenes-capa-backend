@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const morgan = require('morgan')
 
 const { bdmysqlOrdenes } = require('../database/mySqlConnection');
 
@@ -59,6 +60,8 @@ class Server {
         
         this.app.use(cors());
 
+        // Morgan para logging de requests en modo dev
+        this.app.use(morgan('dev'));
        
         this.app.use(express.json());
 
